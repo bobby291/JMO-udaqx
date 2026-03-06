@@ -160,12 +160,12 @@ const Navbar = () => {
       <div className="hidden md:flex items-center gap-4">
 
         <button className="border px-4 py-1 rounded-full">
-          JMO BizHub
+          JMO
         </button>
 
-        <button className="bg-white text-black px-6 py-2 rounded-full">
+        <Link href="/Auth" className="bg-white text-black px-6 py-2 rounded-full">
           Login
-        </button>
+        </Link>
 
       </div>
 
