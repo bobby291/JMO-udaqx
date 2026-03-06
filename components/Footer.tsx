@@ -56,9 +56,9 @@ const Footer = () => {
                             <div>
                                 <h3 className="font-medium text-sm mb-4">Products</h3>
                                 <ul className="space-y-3 text-sm text-neutral-800">
-                                    <li><a href="#" className="hover:text-neutral-700">Components</a></li>
-                                    <li><a href="#" className="hover:text-neutral-700">Templates</a></li>
-                                    <li><a href="#" className="hover:text-neutral-700">Icons</a></li>
+                                    <li><a href="#" className="hover:text-neutral-700">Digitals</a></li>
+                                    <li><a href="#" className="hover:text-neutral-700">New & Feeds</a></li>
+                                    <li><a href="#" className="hover:text-neutral-700">Marketing</a></li>
                                 </ul>
                             </div>
 
@@ -67,10 +67,10 @@ const Footer = () => {
                                 <h3 className="font-medium text-sm mb-4">Resources</h3>
                                 <ul className="space-y-3 text-sm text-neutral-800">
                                     <li><a href="#" className="hover:text-neutral-700">JMO Academy</a></li>
-                                    <li><a href="#" className="hover:text-neutral-700">Templates</a></li>
-                                    <li><a href="#" className="hover:text-neutral-700">Components</a></li>
-                                    <li><a href="#" className="hover:text-neutral-700">Blogs</a></li>
-                                    <li><a href="#" className="hover:text-neutral-700">Store</a></li>
+                                    <li><a href="#" className="hover:text-neutral-700">JMO Media</a></li>
+                                    <li><a href="#" className="hover:text-neutral-700">JMO Bizhub</a></li>
+                                    <li><a href="#" className="hover:text-neutral-700">JMO Blogs</a></li>
+                                    <li><a href="#" className="hover:text-neutral-700">JMO Markting</a></li>
                                 </ul>
                             </div>
 
