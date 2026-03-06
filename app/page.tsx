@@ -1,6 +1,8 @@
 import Navbar from "@/components/Navbar"
 import Hero from "@/components/Hero"
-import Categories from "@/components/Categories"
+import Bizhub from "@/components/Bizhub";
+import Academy from "@/components/Academy";
+import Media from "@/components/Media";
 import Works from "@/components/Works";
 import Pricing from "@/components/Pricing"
 import Newsletter from "@/components/Newsletter"
@@ -11,9 +13,11 @@ export default function Home() {
     <>
       <Navbar />
       <Hero />
-      <Categories />
+      <Bizhub />
+      <Academy />
+      <Media />
       <Works />
-      <Pricing />
+      {/*<Pricing /> */} 
       <Newsletter /> 
       <Footer />
     
