@@ -273,9 +273,9 @@ const Navbar = () => {
             JMO BizHub
           </button>
 
-          <button className="bg-black text-white py-2 rounded-full">
+          <Link href="/Auth" className="bg-black text-white py-2 rounded-full">
             Login
-          </button>
+          </Link>
 
         </div>
 

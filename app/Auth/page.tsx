@@ -46,15 +46,7 @@ export default function Auth() {
             Continue with Facebook
           </button>
 
-          <button className="w-full flex items-center justify-center gap-3 border rounded-lg py-3 hover:bg-gray-50">
-            <Image
-              src="https://www.svgrepo.com/show/303128/apple-logo.svg"
-              alt="apple"
-              width={20}
-              height={20}
-            />
-            Continue with Apple
-          </button>
+          
 
         </div>
 
