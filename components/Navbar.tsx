@@ -27,7 +27,7 @@ const Navbar = () => {
   ];
 
   const categories = [
-    { name: "JMO BizHub", icon: Briefcase, path: "#" },
+    { name: "JMO BizHub", icon: Briefcase, path: "/BizHub" },
     { name: "JMO Media", icon: Video, path: "#" },
     { name: "JMO Academy", icon: GraduationCap, path: "#" },
     { name: "JMO Food and Agriculture", icon: Wheat, path: "#" },
