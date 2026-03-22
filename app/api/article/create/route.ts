@@ -1,19 +1,37 @@
 import { prisma } from "@/lib/prisma"
 import { NextResponse } from "next/server"
 
-export async function POST(req:Request){
+export const dynamic = "force-dynamic" // VERY IMPORTANT
 
-const body = await req.json()
+export async function POST(req: Request) {
+  try {
+    const body = await req.json()
 
-const article = await prisma.article.create({
-data:{
-title:body.title,
-content:body.content,
-image:body.image,
-authorId:body.authorId
-}
-})
+    //  Basic validation
+    if (!body.title || !body.content || !body.authorId) {
+      return NextResponse.json(
+        { error: "Missing required fields" },
+        { status: 400 }
+      )
+    }
 
-return NextResponse.json(article)
+    const article = await prisma.article.create({
+      data: {
+        title: body.title,
+        content: body.content,
+        image: body.image || null,
+        authorId: body.authorId,
+      },
+    })
 
+    return NextResponse.json(article, { status: 201 })
+
+  } catch (error) {
+    console.error("CREATE ARTICLE ERROR:", error)
+
+    return NextResponse.json(
+      { error: "Something went wrong" },
+      { status: 500 }
+    )
+  }
 }

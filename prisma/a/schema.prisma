@@ -1,0 +1,103 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "a"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  AUDIENCE
+  CREATOR
+  ADMIN
+}
+
+enum CreatorType {
+  PRODUCT
+  SERVICE
+}
+
+model User {
+  id       String  @id @default(cuid())
+  name     String?
+  email    String  @unique
+  password String?
+  country  String?
+  role     Role    @default(AUDIENCE)
+
+  creatorProfile CreatorProfile?
+  orders         Order[]
+  articles       Article[]
+
+  createdAt DateTime @default(now())
+}
+
+model CreatorProfile {
+  id          String      @id @default(cuid())
+  brandName   String
+  creatorType CreatorType
+  category    String
+  cacDocument String
+  trialEndsAt DateTime
+
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id])
+
+  products Product[]
+  services Service[]
+}
+
+model Product {
+  id          String  @id @default(cuid())
+  title       String
+  description String
+  price       Float
+  image       String?
+
+  creatorId String
+  creator   CreatorProfile @relation(fields: [creatorId], references: [id])
+
+  createdAt DateTime @default(now())
+}
+
+model Service {
+  id          String @id @default(cuid())
+  title       String
+  description String
+  price       Float
+
+  creatorId String
+  creator   CreatorProfile @relation(fields: [creatorId], references: [id])
+
+  createdAt DateTime @default(now())
+}
+
+model Order {
+  id     String @id @default(cuid())
+  amount Float
+  status String
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+}
+
+model Article {
+  id      String  @id @default(cuid())
+  title   String
+  content String
+  image   String?
+
+  authorId String
+  author   User   @relation(fields: [authorId], references: [id])
+
+  createdAt DateTime @default(now())
+}
