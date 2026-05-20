@@ -1,24 +1,18 @@
-import Navbar from "@/components/Navbar"
 import Hero from "@/components/Hero"
-import Bizhub from "@/components/Bizhub";
-import Academy from "@/components/Academy";
-{/* import Media from "@/components/Media"; */}
-import Works from "@/components/Works";
+import Vision from "@/components/Vision";
 import Newsletter from "@/components/Newsletter"
-import Footer from "@/components/Footer";
-
+import About from "@/components/About";
+import Mission from "@/components/Mission";
+import HowItWorks from "@/components/HowitWorks";
 export default function Home() {
   return (
     <>
-      <Navbar />
       <Hero />
-      <Bizhub />
-      <Academy />
-      {/*<Media />*/}
-      <Works />
-      <Newsletter /> 
-      <Footer />
-    
+      <About />
+      <Vision />
+      <Mission />
+      <HowItWorks />
+      <Newsletter />     
     </>
   );
 }

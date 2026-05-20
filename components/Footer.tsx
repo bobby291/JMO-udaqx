@@ -56,9 +56,9 @@ const Footer = () => {
                             <div>
                                 <h3 className="font-medium text-sm mb-4">Products</h3>
                                 <ul className="space-y-3 text-sm text-neutral-800">
-                                    <li><a href="#" className="hover:text-neutral-700">Digitals</a></li>
-                                    <li><a href="#" className="hover:text-neutral-700">New & Feeds</a></li>
-                                    <li><a href="#" className="hover:text-neutral-700">Marketing</a></li>
+                                    <li><a href="#" className="hover:text-neutral-700">JMO Academy</a></li>
+                                    <li><a href="#" className="hover:text-neutral-700">JMO Media</a></li>
+                                    <li><a href="#" className="hover:text-neutral-700">JMO Bizhub</a></li>
                                 </ul>
                             </div>
 
@@ -66,11 +66,9 @@ const Footer = () => {
                             <div>
                                 <h3 className="font-medium text-sm mb-4">Resources</h3>
                                 <ul className="space-y-3 text-sm text-neutral-800">
-                                    <li><a href="#" className="hover:text-neutral-700">JMO Academy</a></li>
-                                    <li><a href="#" className="hover:text-neutral-700">JMO Media</a></li>
-                                    <li><a href="#" className="hover:text-neutral-700">JMO Bizhub</a></li>
-                                    <li><a href="#" className="hover:text-neutral-700">JMO Blogs</a></li>
-                                    <li><a href="#" className="hover:text-neutral-700">JMO Markting</a></li>
+                                    <li><a href="#" className="hover:text-neutral-700">Digitals</a></li>
+                                    <li><a href="#" className="hover:text-neutral-700">New & Feeds</a></li>
+                                    <li><a href="#" className="hover:text-neutral-700">Marketing</a></li>
                                 </ul>
                             </div>
 
@@ -80,10 +78,6 @@ const Footer = () => {
                                 <ul className="space-y-3 text-sm text-neutral-800">
                                     <li><a href="#" className="hover:text-neutral-700">About</a></li>
                                     <li><a href="#" className="hover:text-neutral-700">Vision</a></li>
-                                    <li className="flex items-center gap-2">
-                                        <a href="#" className="hover:text-neutral-700">Careers</a>
-                                        <span className="text-[11px] px-2 py-0.5 rounded-full bg-neutral-50 border border-neutral-400 text-neutral-700">HIRING</span>
-                                    </li>
                                     <li><a href="#" className="hover:text-neutral-700">Privacy policy</a></li>
                                     <li><a href="#" className="hover:text-neutral-700">Contact Us</a></li>
                                 </ul>
@@ -92,15 +86,10 @@ const Footer = () => {
                     </div>
 
                     <div className="max-w-7xl mx-auto mt-12 pt-4 border-t border-neutral-300 flex justify-between items-center">
-                        <p className="text-neutral-600 text-sm">© 2025 JMO BizHub</p>
+                        <p className="text-neutral-600 text-sm">© 2026 JMO Group</p>
                         <p className='text-sm text-neutral-600'>All right reserved.</p>
                     </div>
-                    <div className="relative">
-                        <div className="absolute inset-x-0 bottom-0 mx-auto w-full max-w-3xl h-full max-h-64 bg-slate-100 rounded-full blur-[100px] pointer-events-none"/>
-                        <h1 className=" text-center font-extrabold leading-[0.7] text-transparent text-[clamp(3rem,15vw,15rem)] [-webkit-text-stroke:1px_#D4D4D4] mt-6" >
-                            JMO
-                        </h1>
-                    </div>
+                
                 </footer>
             </div>
         </>

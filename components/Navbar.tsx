@@ -21,17 +21,15 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Categories" },
-    { name: "Works", path: "#works" },
+    { name: "About", path: "#works" },
     { name: "Pricing" },
     { name: "Contact", path: "#contact" },
   ];
 
   const categories = [
     { name: "JMO BizHub", icon: Briefcase, path: "/BizHub" },
-    { name: "JMO Media", icon: Video, path: "#" },
+    { name: "JMO Media", icon: Video, path: "/Media" },
     { name: "JMO Academy", icon: GraduationCap, path: "#" },
-    { name: "JMO Food and Agriculture", icon: Wheat, path: "#" },
-    { name: "JMO Climate", icon: Leaf, path: "#" },
   ];
 
   const pricing = [
@@ -49,7 +47,7 @@ const Navbar = () => {
 
   return (
 
-    <nav className="fixed top-0 left-0 w-full bg-indigo-500 text-white flex items-center justify-between px-6 md:px-16 lg:px-24 py-4 z-50">
+    <nav className="fixed top-0 left-0 w-full bg-purple-900 text-white flex items-center justify-between px-6 md:px-16 lg:px-24 py-4 z-50">
 
       {/* Logo + Brand Name */}
 <Link href="/" className="flex items-center gap-2">
@@ -158,14 +156,14 @@ const Navbar = () => {
 
       {/* Desktop Buttons */}
       <div className="hidden md:flex items-center gap-4">
-
-        <button className="border px-4 py-1 rounded-full">
+          {/* <button className="border px-4 py-1 rounded-full">
           JMO
         </button>
 
         <Link href="/Auth" className="bg-white text-black px-6 py-2 rounded-full">
           Login
-        </Link>
+        </Link> */}
+        
 
       </div>
 
@@ -269,13 +267,13 @@ const Navbar = () => {
 
           <Link href="#contact">Contact</Link>
 
-          <button className="border py-2 rounded-full">
+          {/* <button className="border py-2 rounded-full">
             JMO BizHub
-          </button>
+          </button> */}
 
-          <Link href="/Auth" className="bg-black text-center text-white py-2 rounded-full">
+          {/* <Link href="/Auth" className="bg-black text-center text-white py-2 rounded-full">
             Login
-          </Link>
+          </Link> */}
 
         </div>
 

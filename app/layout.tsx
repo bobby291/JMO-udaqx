@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "JMO BizHub",
@@ -16,7 +18,9 @@ export default function RootLayout({
     <html lang="en">
       {/* Use system font to avoid Google Fonts fetch errors */}
       <body className="antialiased font-sans">
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

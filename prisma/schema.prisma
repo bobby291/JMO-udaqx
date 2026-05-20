@@ -1,84 +1,157 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
 generator client {
-  provider = "prisma-client-js"
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
 }
 
-enum Role {
-  AUDIENCE
-  CREATOR
-  ADMIN
-}
+// ============================================
+// AUTH & USERS
+// ============================================
 
-enum CreatorType {
-  PRODUCT
-  SERVICE
+enum Role {
+  ADMIN
+  AUTHOR
+  VIEWER
 }
 
 model User {
-  id             String          @id @default(cuid())
-  name           String?
-  email          String          @unique
-  password       String?
-  country        String?
-  role           Role            @default(AUDIENCE)
-  createdAt      DateTime        @default(now())
-  articles       Article[]
-  creatorProfile CreatorProfile?
-  orders         Order[]
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  password      String?   // For credentials auth
+  image         String?
+  role          Role      @default(VIEWER)
+  emailVerified DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  posts         Post[]
+  comments      Comment[]
+  accounts      Account[]
+  sessions      Session[]
+
+  @@map("users")
 }
 
-model CreatorProfile {
-  id          String      @id @default(cuid())
-  brandName   String
-  creatorType CreatorType
-  category    String
-  cacDocument String
-  trialEndsAt DateTime
-  userId      String      @unique
-  user        User        @relation(fields: [userId], references: [id])
-  products    Product[]
-  services    Service[]
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?  @db.Text
+  access_token       String?  @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?  @db.Text
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
 }
 
-model Product {
-  id          String         @id @default(cuid())
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+// ============================================
+// MEDIA - CATEGORIES
+// ============================================
+
+model Category {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  slug        String   @unique
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  posts       Post[]
+
+  @@map("categories")
+}
+
+// ============================================
+// MEDIA - POSTS/ARTICLES
+// ============================================
+
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+model Post {
+  id          String     @id @default(cuid())
   title       String
-  description String
-  price       Float
-  image       String?
-  creatorId   String
-  createdAt   DateTime       @default(now())
-  creator     CreatorProfile @relation(fields: [creatorId], references: [id])
+  slug        String     @unique
+  excerpt     String?
+  content     String     @db.Text
+  featured    Boolean    @default(false)
+  status      PostStatus @default(DRAFT)
+  publishedAt DateTime?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  // Relations
+  authorId    String
+  author      User       @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  categoryId  String
+  category    Category   @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  comments    Comment[]
+
+  @@index([authorId])
+  @@index([categoryId])
+  @@index([slug])
+  @@index([status])
+  @@map("posts")
 }
 
-model Service {
-  id          String         @id @default(cuid())
-  title       String
-  description String
-  price       Float
-  creatorId   String
-  createdAt   DateTime       @default(now())
-  creator     CreatorProfile @relation(fields: [creatorId], references: [id])
-}
+// ============================================
+// MEDIA - COMMENTS
+// ============================================
 
-model Order {
+model Comment {
   id        String   @id @default(cuid())
-  amount    Float
-  status    String
-  userId    String
+  content   String   @db.Text
   createdAt DateTime @default(now())
-  user      User     @relation(fields: [userId], references: [id])
-}
+  updatedAt DateTime @updatedAt
 
-model Article {
-  id        String   @id @default(cuid())
-  title     String
-  content   String
-  image     String?
+  // Relations
   authorId  String
-  createdAt DateTime @default(now())
-  author    User     @relation(fields: [authorId], references: [id])
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@index([authorId])
+  @@index([postId])
+  @@map("comments")
 }
